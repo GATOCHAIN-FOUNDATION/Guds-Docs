@@ -35,9 +35,8 @@ Two asynchronous functions are implemented to grant permission for token transfe
 - **`ApproveToken2`**: Approves the Swap contract to transfer GUDS tokens.
 
 The functions buffer the gas price to ensure transaction reliability:
-\[
-\text{Gas Price with Buffer} = \text{Current Gas Price} \times 2
-\]
+
+Gas Price with Buffer = Current Gas Price} * 2
 
 ---
 
@@ -46,37 +45,34 @@ The `checkReservesAndSwap` function operates as follows:
 
 ### 1. **Retrieve Reserves**
 The function fetches the reserves of USDT and GUDS tokens from the Swap contract:
-\[
-\text{Reserves (USDT)} = \text{reserveToken1}
-\]
-\[
-\text{Reserves (GUDS)} = \text{reserveToken2}
-\]
+
+Reserves (USDT) = reserveToken1
+
+Reserves (GUDS) = reserveToken2
+
 
 ### 2. **Calculate Prices**
 The prices of USDT and GUDS tokens relative to each other are computed using the following formulas:
-\[
-\text{Price of USDT (in GUDS)} = \frac{\text{Reserves (USDT)}}{\text{Reserves (GUDS)}}
-\]
-\[
-\text{Price of GUDS (in USDT)} = \frac{\text{Reserves (GUDS)}}{\text{Reserves (USDT)}}
-\]
+
+
+Price of USDT (in GUDS) = Reserves (USDT) / Reserves (GUDS)
+Price of GUDS (in USDT) = Reserves (GUDS) / Reserves (USDT)
+
 
 ### 3. **Perform Swap**
 - If reserves are balanced:
-\[
-\text{Reserves (USDT)} = \text{Reserves (GUDS)}
-\]
+
+Reserves (USDT) = Reserves (GUDS)
+
 No action is taken.
 
 - If reserves are unbalanced, the difference is calculated:
-\[
-\text{Difference in Wei} = |\text{Reserves (USDT)} - \text{Reserves (GUDS)}|
-\]
+
+Difference in Wei= | Reserves (USDT) - Reserves (GUDS) |
+
 To restore parity, the function performs a swap with half the difference:
-\[
-\text{Swap Amount} = \frac{\text{Difference in Wei}}{2}
-\]
+
+Swap Amount = Difference in Wei / 2
 
 The swaps are executed using:
 - **`swapTokenAToB`** for swapping USDT to GUDS.
