@@ -108,5 +108,6 @@ The `checkReservesAndSwap` function runs every 10 seconds using `setInterval`, a
 
 This documentation provides an organized overview of the application's structure, functionality, and mathematical formulas for token pricing and swaps.
 
-<img width="1383" alt="image" src="https://github.com/user-attachments/assets/bc3a47a7-3b66-4a8f-b82d-69f3e7c642e0" />
+<img width="1383" alt="image" src="https://github.com/user-attachments/assets/6a5c22ae-79a0-49cf-94da-7623e3e9c974" />
+
 
